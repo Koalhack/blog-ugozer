@@ -23,7 +23,8 @@ class PostController extends Controller
 
     public function getPost(string $id)
     {
-        if (Post::where('id', $id)->first()) {
+        $post = Post::where('id', $id)->first();
+        if ($post) {
             return new PostResource(Post::findOrFail($id));
         }
         return Response::json(['state' => 'error', 'error' => 'Post not found!']);
