@@ -50,7 +50,7 @@ onUnmounted(() => {
         :class="isSticky ? 'fixed backdrop-blur-lg bg-carbon-950/85 border-b-carbon-50/10' : 'absolute top-0 left-0 border-b-transparent'">
         <div class="flex flex-col mx-6 mt-4 mb-3">
             <div>
-                <a class="block text-carbon-50 py-2 px-3" href="">Ugozer Blog</a>
+                <router-link to="/" class="block text-carbon-50 py-2 px-3">Ugozer Blog</router-link>
             </div>
             <div  class="overflow-x-auto">
                 <ul v-if="response" class="flex">
