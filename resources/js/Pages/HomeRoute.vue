@@ -1,6 +1,7 @@
 <script setup>
     import PostCardList from '../Components/PostCardList.vue';
     import Pagination from '../Components/Pagination.vue';
+    import Copyright from '../Components/Copyright.vue';
 
     import axios from 'axios';
     import {ref, watch, onMounted} from 'vue';
@@ -35,5 +36,6 @@
     </main>
     <footer>
         <Pagination @page="(page) => activePage = page" :activePage="response?.data?.meta?.current_page" :maxPage="response?.data?.meta?.last_page" />
+        <Copyright link="https://portfolio.duckdns.org" name="Alexandre Saner" />
     </footer>
 </template>

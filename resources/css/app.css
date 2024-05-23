@@ -14,4 +14,8 @@
         @apply content-[''] absolute w-full h-full top-0 left-0 -z-10;
         background: linear-gradient(180deg, black 0%, rgba(0, 0, 0, 0) 100%);
     }
+
+    .link {
+        @apply underline underline-offset-2 decoration-ember;
+    }
 }
