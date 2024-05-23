@@ -1,5 +1,6 @@
 <script setup>
     import Pagination from '../Components/Pagination.vue';
+    import Msg from '../Components/Msg.vue';
 
     import axios from 'axios';
     import {ref, watch, onMounted} from 'vue';
@@ -82,10 +83,7 @@
             <router-link :to="`${$route.fullPath}/create` " class="button-frame">Add new</router-link>
         </div>
         <section >
-            <div v-if="deleteResponse" class="flex justify-between mt-9 px-4 py-3 rounded-sm border border-carbon-300 bg-carbon-900">
-                <span>{{deleteResponse.data.state}}</span>
-                <p class="text-carbon-200">{{deleteResponse.data.success || deleteResponse.data.error || ''}}</p>
-            </div>
+            <Msg :response="deleteResponse" />
         </section>
     </main>
     <footer>
