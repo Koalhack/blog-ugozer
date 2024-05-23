@@ -14,11 +14,11 @@ class PostController extends Controller
     // Posts
     public function getPosts(Request $request, ?string $id = null)
     {
-        $Paginatelimit = intval($request->query('limit')) ?: 10;
+        $paginatelimit = intval($request->query('limit')) ?: 10;
         if ($id != null) {
-            return PostResource::collection(Post::orderBy('id', 'DESC')->where('category_id', $id)->paginate($Paginatelimit));
+            return PostResource::collection(Post::orderBy('id', 'DESC')->where('category_id', $id)->paginate($paginatelimit));
         }
-        return PostResource::collection(Post::orderBy('id', 'DESC')->paginate($Paginatelimit));
+        return PostResource::collection(Post::orderBy('id', 'DESC')->paginate($paginatelimit));
     }
 
     public function getPost(string $id)
