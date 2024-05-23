@@ -42,6 +42,13 @@ const router = createRouter({
             },
         },
         {
+            path: "/admin/category/create",
+            component: () => import("./Pages/CategoryCreateRoute.vue"),
+            meta: {
+                title: "Admin Category",
+            },
+        },
+        {
             path: "/test",
             component: () => import("./Pages/TestRoute.vue"),
         },
