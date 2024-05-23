@@ -11,7 +11,7 @@ import { capitalizeFirstLetter } from '../Utils/function.js';
 </script>
 
 <template>
-    <router-link :to="'/' + slug + '/' + id " class=" group flex flex-col justify-center">
+    <router-link :to="'/post/' + slug + '/' + id " class=" group flex flex-col justify-center">
         <figure>
             <img
                 class="w-full mx-auto object-cover rounded-md transition-colors duration-200 ease-linear border border-carbon-300 group-hover:border-carbon-200"
