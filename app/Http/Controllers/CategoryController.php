@@ -11,10 +11,15 @@ use Illuminate\Support\Facades\Validator;
 class CategoryController extends Controller
 {
     // Category
-    public function getCategories(Request $request)
+    public function getCategoriesPaginate(Request $request)
     {
         $paginatelimit = intval($request->query('limit')) ?: 10;
         return CategoryResource::collection(Category::orderBy('id', 'DESC')->paginate($paginatelimit));
+    }
+
+    public function getCategories()
+    {
+        return CategoryResource::collection(Category::orderBy('id', 'DESC')->get());
     }
 
     public function createCategory(Request $request)

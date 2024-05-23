@@ -19,12 +19,14 @@ Route::controller(PostController::class)->group(function () {
 });
 
 Route::controller(CategoryController::class)->group(function () {
+    Route::get("/categoriesPag", 'getCategoriesPaginate');
     Route::get("/categories", 'getCategories');
     Route::post("/category/create", 'createCategory');
     Route::delete("/category/{id}/delete", 'deleteCategory')->where(['id' => '[0-9]+']);
 });
 
 Route::controller(ImageController::class)->group(function () {
+    Route::get("/imagesPag", 'getImagesPaginate');
     Route::get("/images", 'getImages');
     Route::post("/image/add", 'addImage');
     Route::delete("/image/{id}/delete", 'deleteImage')->where(['id' => '[0-9]+']);

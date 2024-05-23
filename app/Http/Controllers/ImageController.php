@@ -13,10 +13,15 @@ use Illuminate\Support\Facades\Validator;
 class ImageController extends Controller
 {
     // Image
-    public function getImages(Request $request)
+    public function getImagesPaginate(Request $request)
     {
         $paginatelimit = intval($request->query('limit')) ?: 10;
         return ImageResource::collection(Image::orderBy('id', 'DESC')->paginate($paginatelimit));
+    }
+
+    public function getImages()
+    {
+        return ImageResource::collection(Image::orderBy('id', 'DESC')->get());
     }
 
     public function addImage(Request $request)
