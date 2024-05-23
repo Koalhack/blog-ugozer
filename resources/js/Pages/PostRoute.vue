@@ -26,7 +26,7 @@ getPost();
             <figure >
                 <img
                     class="w-full object-cover rounded-lg border border-carbon-300"
-                    :src="response?.image_path || 'https://placehold.co/600x400/000000/FFFFFF'"
+                    :src="response?.image_path ? `/storage/${response?.image_path}` : 'https://placehold.co/600x400/000000/FFFFFF'"
                     :alt="response?.image_name || 'thumbnail'">
             </figure>
             <h1
