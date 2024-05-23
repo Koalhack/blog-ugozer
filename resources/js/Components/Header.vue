@@ -67,7 +67,7 @@ onUnmounted(() => {
                         <router-link
                             :to="'/?category=' + item.id"
                             class="block py-2 px-3 hover:text-carbon-50 duration-100 ease-linear"
-                            :class="$route.query.category === item.id ? 'text-carbon-50' : 'text-carbon-200'"
+                            :class="parseInt($route.query.category) === item.id ? 'text-carbon-50' : 'text-carbon-200'"
                         >
                             {{capitalizeFirstLetter(item?.name)}}
                         </router-link>
