@@ -23,18 +23,18 @@
             url.delete = "/api/post";
         break;
         case "category":
-            url.get = "/api/categories";
+            url.get = "/api/categoriesPag";
             url.delete = "/api/category";
         break;
         case "image":
-            url.get = "/api/images";
+            url.get = "/api/imagesPag";
             url.delete = "/api/image"
         break;
     }
 
     async function getRequest(url) {
         try {
-            response.value = await axios.get(`${url}?page=${activePage.value}&limit=1`);
+            response.value = await axios.get(`${url}?page=${activePage.value}`);
         } catch (error) {
             console.log("error: ", error);
         }
