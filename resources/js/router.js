@@ -49,6 +49,13 @@ const router = createRouter({
             },
         },
         {
+            path: "/admin/image/create",
+            component: () => import("./Pages/ImageCreateRoute.vue"),
+            meta: {
+                title: "Admin Image",
+            },
+        },
+        {
             path: "/test",
             component: () => import("./Pages/TestRoute.vue"),
         },
