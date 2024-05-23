@@ -18,6 +18,30 @@ const router = createRouter({
             },
         },
         {
+            path: "/admin/post",
+            component: () => import("./Pages/ListRoute.vue"),
+            meta: {
+                type: "post",
+                title: "Admin Post",
+            },
+        },
+        {
+            path: "/admin/category",
+            component: () => import("./Pages/ListRoute.vue"),
+            meta: {
+                type: "category",
+                title: "Admin Category",
+            },
+        },
+        {
+            path: "/admin/image",
+            component: () => import("./Pages/ListRoute.vue"),
+            meta: {
+                type: "image",
+                title: "Admin Image",
+            },
+        },
+        {
             path: "/test",
             component: () => import("./Pages/TestRoute.vue"),
         },
