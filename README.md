@@ -27,47 +27,22 @@ This is a blog fullstack project using PHP Laravel and SQLite database as a back
 
 Follow these steps to get this project live
 
-```shell
-git clone https://github.com/Koalhack/blog-ugozer.git
-cd blog-ugozer
-composer install
-```
-
-```shell
-php artisan migrate
-```
-
-> seed your database with data (Optional)
->
-> ```shell
-> php artisan migrate:fresh --seed
-> ```
-
-Launch this command in one terminal instance
-
-```shell
-php artisan serve
-```
-
-Launch this command in another terminal instance
-
-```shell
-npm run dev
-```
-
-## Development Install
+## Development
 
 Follow these steps to get this project live
 
 ```shell
 git clone https://github.com/Koalhack/blog-ugozer.git
 cd blog-ugozer
+cp .env.example .env
 composer install
 npm install
 ```
 
 ```shell
+php artisan storage:link
 php artisan migrate
+php artisan key:generate
 ```
 
 > seed your database with data (Optional)
