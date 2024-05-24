@@ -59,7 +59,14 @@ const router = createRouter({
             path: "/admin/post/create",
             component: () => import("./Pages/PostCreateRoute.vue"),
             meta: {
-                title: "Admin Image",
+                title: "Admin Post",
+            },
+        },
+        {
+            path: "/admin/post/edit/:id",
+            component: () => import("./Pages/PostEditRoute.vue"),
+            meta: {
+                title: "Admin Post",
             },
         },
         {
