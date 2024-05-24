@@ -87,8 +87,6 @@
         <section >
             <Msg :response="deleteResponse" />
         </section>
-    </main>
-    <footer>
         <Pagination @page="(page) => activePage = page" :activePage="response?.data?.meta?.current_page" :maxPage="response?.data?.meta?.last_page" />
-    </footer>
+    </main>
 </template>

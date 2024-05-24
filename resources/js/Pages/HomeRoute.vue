@@ -7,7 +7,6 @@
     //INFO: Components
     import PostCardList from '../Components/PostCardList.vue';
     import Pagination from '../Components/Pagination.vue';
-    import Copyright from '../Components/Copyright.vue';
 
     const route = useRoute();
     const response = ref();
@@ -34,9 +33,6 @@
         <section>
             <PostCardList :list="response?.data?.data" />
         </section>
-    </main>
-    <footer>
         <Pagination @page="(page) => activePage = page" :activePage="response?.data?.meta?.current_page" :maxPage="response?.data?.meta?.last_page" />
-        <Copyright link="https://portfolio.duckdns.org" name="Alexandre Saner" />
-    </footer>
+    </main>
 </template>
