@@ -7,6 +7,28 @@
     body {
         @apply relative bg-carbon-950 font-figtree text-carbon-50;
     }
+
+    /* Track */
+    ::-webkit-scrollbar {
+        @apply w-[5px] h-[5px];
+    }
+
+    ::-webkit-scrollbar-track {
+        @apply bg-transparent;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        @apply bg-carbon-300 rounded-full;
+    }
+
+    ::selection {
+        @apply text-carbon-900 bg-ember;
+    }
+
+    ::-moz-selection {
+        @apply text-carbon-900 bg-ember;
+    }
 }
 
 @layer components {
