@@ -1,39 +1,42 @@
 <script setup>
-import {ref} from 'vue';
-import axios from 'axios';
 
-import Msg from '../Components/Msg.vue';
+    //INFO: Dependencies
+    import {ref} from 'vue';
+    import axios from 'axios';
 
-const getResponse = ref({
-    category: null,
-    image: null
-});
+    //INFO: Components
+    import Msg from '../Components/Msg.vue';
 
-const postResponse = ref();
+    const getResponse = ref({
+        category: null,
+        image: null
+    });
 
-async function getRequest() {
-    try {
-        getResponse.value.category = await axios.get('/api/categories');
-        getResponse.value.image = await axios.get('/api/images');
-    } catch (error) {
-        console.error("error: ", error);
+    const postResponse = ref();
+
+    async function getRequest() {
+        try {
+            getResponse.value.category = await axios.get('/api/categories');
+            getResponse.value.image = await axios.get('/api/images');
+        } catch (error) {
+            console.error("error: ", error);
+        }
     }
-}
 
-async function postRequest(e) {
-    try {
-        let data = new FormData();
-        data.append('title', e.target.title.value);
-        data.append('category', e.target.category.value);
-        data.append('image', e.target.image.value);
-        data.append('content', e.target.content.value);
-        postResponse.value = await axios.post("/api/post/create", data);
-    } catch (error) {
-        console.error("error: ", error);
+    async function postRequest(e) {
+        try {
+            let data = new FormData();
+            data.append('title', e.target.title.value);
+            data.append('category', e.target.category.value);
+            data.append('image', e.target.image.value);
+            data.append('content', e.target.content.value);
+            postResponse.value = await axios.post("/api/post/create", data);
+        } catch (error) {
+            console.error("error: ", error);
+        }
     }
-}
 
-getRequest();
+    getRequest();
 </script>
 
 <template>

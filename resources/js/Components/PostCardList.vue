@@ -1,10 +1,10 @@
 <script setup>
-import PostCard from './PostCard.vue';
+    //INFO: Dependencies
+    import PostCard from './PostCard.vue';
 
-const props = defineProps({
-    list: Object
-});
-
+    const props = defineProps({
+        list: Object
+    });
 </script>
 
 <template>

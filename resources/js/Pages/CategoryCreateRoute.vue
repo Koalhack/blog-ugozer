@@ -1,21 +1,22 @@
 <script setup>
-import {ref} from 'vue';
-import axios from 'axios';
+    //INFO: Dependencies
+    import {ref} from 'vue';
+    import axios from 'axios';
 
-import Msg from '../Components/Msg.vue';
+    //INFO: Components
+    import Msg from '../Components/Msg.vue';
 
-const response = ref();
+    const response = ref();
 
-async function postRequest(e) {
-    try {
-        let data = new FormData();
-        data.append('name', e.target.name.value)
-        response.value = await axios.post("/api/category/create", data)
-    } catch (error) {
-        console.error("error: ", error);
+    async function postRequest(e) {
+        try {
+            let data = new FormData();
+            data.append('name', e.target.name.value)
+            response.value = await axios.post("/api/category/create", data)
+        } catch (error) {
+            console.error("error: ", error);
+        }
     }
-}
-
 </script>
 
 <template>

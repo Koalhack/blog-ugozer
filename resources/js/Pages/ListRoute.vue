@@ -1,10 +1,12 @@
 <script setup>
-    import Pagination from '../Components/Pagination.vue';
-    import Msg from '../Components/Msg.vue';
-
+    //INFO: Dependencies
     import axios from 'axios';
     import {ref, watch, onMounted} from 'vue';
     import {useRoute} from 'vue-router';
+
+    //INFO: Components
+    import Pagination from '../Components/Pagination.vue';
+    import Msg from '../Components/Msg.vue';
 
     const route = useRoute();
     const response = ref();

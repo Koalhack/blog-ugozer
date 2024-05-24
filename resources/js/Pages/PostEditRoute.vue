@@ -1,47 +1,48 @@
 <script setup>
-import {ref} from 'vue';
-import {useRoute} from 'vue-router';
-import axios from 'axios';
+    //INFO: Dependencies
+    import {ref} from 'vue';
+    import {useRoute} from 'vue-router';
+    import axios from 'axios';
 
-import Msg from '../Components/Msg.vue';
+    //INFO: Components
+    import Msg from '../Components/Msg.vue';
 
-const route = useRoute();
-const postId = route.params.id;
+    const route = useRoute();
+    const postId = route.params.id;
 
-const getResponse = ref({
-    post: null,
-    category: null,
-    image: null
-});
+    const getResponse = ref({
+        post: null,
+        category: null,
+        image: null
+    });
+    const putResponse = ref();
 
-const putResponse = ref();
-
-async function getRequest() {
-    try {
-        getResponse.value.post = await axios.get(`/api/post/${postId}`);
-        getResponse.value.category = await axios.get('/api/categories');
-        getResponse.value.image = await axios.get('/api/images');
-    } catch (error) {
-        console.error("error: ", error);
+    async function getRequest() {
+        try {
+            getResponse.value.post = await axios.get(`/api/post/${postId}`);
+            getResponse.value.category = await axios.get('/api/categories');
+            getResponse.value.image = await axios.get('/api/images');
+        } catch (error) {
+            console.error("error: ", error);
+        }
     }
-}
 
-async function putRequest(e) {
-    try {
-        let data = new FormData();
-        data.append('_method', 'put');
-        data.append('title', e.target.title.value);
-        data.append('category', e.target.category.value);
-        data.append('image', e.target.image.value);
-        data.append('content', e.target.content.value);
-        putResponse.value = await axios.post(`/api/post/${postId}/update`, data);
-        console.log(e.target.title.value, e.target.category.value, e.target.image.value, e.target.content.value);
-    } catch (error) {
-        console.error("error: ", error);
+    async function putRequest(e) {
+        try {
+            let data = new FormData();
+            data.append('_method', 'put');
+            data.append('title', e.target.title.value);
+            data.append('category', e.target.category.value);
+            data.append('image', e.target.image.value);
+            data.append('content', e.target.content.value);
+            putResponse.value = await axios.post(`/api/post/${postId}/update`, data);
+            console.log(e.target.title.value, e.target.category.value, e.target.image.value, e.target.content.value);
+        } catch (error) {
+            console.error("error: ", error);
+        }
     }
-}
 
-getRequest();
+    getRequest();
 </script>
 
 <template>

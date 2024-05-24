@@ -1,23 +1,25 @@
 <script setup>
-import axios from 'axios';
-import {ref} from 'vue';
-import {useRoute} from 'vue-router';
+    //INFO: Dependencies
+    import axios from 'axios';
+    import {ref} from 'vue';
+    import {useRoute} from 'vue-router';
 
-import {capitalizeFirstLetter, formatLaravelDate} from '../Utils/function.js';
+    //INFO: Utils
+    import {capitalizeFirstLetter, formatLaravelDate} from '../Utils/function.js';
 
-const route = useRoute();
-const response = ref();
+    const route = useRoute();
+    const response = ref();
 
-async function getPost() {
-    try {
-        response.value = await axios.get(`/api/post/${route.params.id}`);
-        response.value = response.value?.data?.data;
-    } catch (error) {
-        console.error("error: ", error);
+    async function getPost() {
+        try {
+            response.value = await axios.get(`/api/post/${route.params.id}`);
+            response.value = response.value?.data?.data;
+        } catch (error) {
+            console.error("error: ", error);
+        }
     }
-}
 
-getPost();
+    getPost();
 </script>
 
 <template>

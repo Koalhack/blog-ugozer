@@ -1,25 +1,27 @@
 <script setup>
-import {ref} from 'vue';
-import axios from 'axios';
+    //INFO: Dependencies
+    import {ref} from 'vue';
+    import axios from 'axios';
 
-import Msg from '../Components/Msg.vue';
+    //INFO: Components
+    import Msg from '../Components/Msg.vue';
 
-const response = ref();
+    const response = ref();
 
-async function postRequest(e) {
-    try {
-        const config = {
-            headers: {
-                'content-type': 'multipart/form-data'
+    async function postRequest(e) {
+        try {
+            const config = {
+                headers: {
+                    'content-type': 'multipart/form-data'
+                }
             }
+            let data = new FormData();
+            data.append('image', e.target.image.files[0])
+            response.value = await axios.post("/api/image/add", data, config)
+        } catch (error) {
+            console.error("error: ", error);
         }
-        let data = new FormData();
-        data.append('image', e.target.image.files[0])
-        response.value = await axios.post("/api/image/add", data, config)
-    } catch (error) {
-        console.error("error: ", error);
     }
-}
 </script>
 
 <template>

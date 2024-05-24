@@ -1,10 +1,10 @@
 <script setup>
-const props = defineProps({
-   activePage: Number,
-   maxPage: Number
-});
+    const props = defineProps({
+       activePage: Number,
+       maxPage: Number
+    });
 
-const emit = defineEmits(['page']);
+    const emit = defineEmits(['page']);
 </script>
 
 <template>

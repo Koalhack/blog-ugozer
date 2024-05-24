@@ -1,13 +1,14 @@
 <script setup>
-import { capitalizeFirstLetter } from '../Utils/function.js';
-   const props = defineProps({
-       id: Number,
-       slug: String,
-       image_path: String,
-       image_name: String,
-       title: String,
-       category: String
-   });
+    //INFO: Utils
+    import { capitalizeFirstLetter } from '../Utils/function.js';
+       const props = defineProps({
+           id: Number,
+           slug: String,
+           image_path: String,
+           image_name: String,
+           title: String,
+           category: String
+       });
 </script>
 
 <template>

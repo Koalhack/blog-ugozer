@@ -1,11 +1,13 @@
 <script setup>
-    import PostCardList from '../Components/PostCardList.vue';
-    import Pagination from '../Components/Pagination.vue';
-    import Copyright from '../Components/Copyright.vue';
-
+    //INFO: Dependencies
     import axios from 'axios';
     import {ref, watch, onMounted} from 'vue';
     import {useRoute} from 'vue-router';
+
+    //INFO: Components
+    import PostCardList from '../Components/PostCardList.vue';
+    import Pagination from '../Components/Pagination.vue';
+    import Copyright from '../Components/Copyright.vue';
 
     const route = useRoute();
     const response = ref();
@@ -25,7 +27,6 @@
         activePage.value = 1;
     });
     watch(activePage, getPosts);
-
 </script>
 
 <template>

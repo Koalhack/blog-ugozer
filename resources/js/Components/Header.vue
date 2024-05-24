@@ -1,46 +1,49 @@
 <script setup>
-import axios from 'axios';
-import {ref, onMounted, onUnmounted} from 'vue';
-import {capitalizeFirstLetter} from '../Utils/function.js';
+    //INFO: Dependencies
+    import axios from 'axios';
+    import {ref, onMounted, onUnmounted} from 'vue';
 
-let id = 0;
-const items = ref([
-    {id: id++, text: 'tech', active: true},
-    {id: id++, text: 'dev', active: false},
-    {id: id++, text: 'web', active: false},
-    {id: id++, text: 'design', active: false},
-    {id: id++, text: 'Homelab', active: false},
-]);
+    //INFO: Utils
+    import {capitalizeFirstLetter} from '../Utils/function.js';
 
-//INFO: StickyState
-const navbar = ref(null);
-const isSticky = ref(false);
-const scrollCallback = ref(null);
+    let id = 0;
+    const items = ref([
+        {id: id++, text: 'tech', active: true},
+        {id: id++, text: 'dev', active: false},
+        {id: id++, text: 'web', active: false},
+        {id: id++, text: 'design', active: false},
+        {id: id++, text: 'Homelab', active: false},
+    ]);
 
-//INFO: API GET
-const response = ref();
-
-const getCategories = async () => {
-    try {
-        response.value = await axios.get("/api/categories");
-    } catch (error) {
-        console.error("error during data fetching: ", error);
-    }
-}
-
-onMounted(() => {
     //INFO: StickyState
-    scrollCallback.value = window.addEventListener('scroll', () => {
-        let stickyOffset = navbar.value?.offsetTop;
-        isSticky.value = window.pageYOffset > stickyOffset ? true : false;
+    const navbar = ref(null);
+    const isSticky = ref(false);
+    const scrollCallback = ref(null);
+
+    //INFO: API GET
+    const response = ref();
+
+    const getCategories = async () => {
+        try {
+            response.value = await axios.get("/api/categories");
+        } catch (error) {
+            console.error("error during data fetching: ", error);
+        }
+    }
+
+    onMounted(() => {
+        //INFO: StickyState
+        scrollCallback.value = window.addEventListener('scroll', () => {
+            let stickyOffset = navbar.value?.offsetTop;
+            isSticky.value = window.pageYOffset > stickyOffset ? true : false;
+        })
+
+        getCategories();
+    });
+
+    onUnmounted(() => {
+        window.removeEventListener('scroll', scrollCallback.value);
     })
-
-    getCategories();
-});
-
-onUnmounted(() => {
-    window.removeEventListener('scroll', scrollCallback.value);
-})
 </script>
 
 <template>
