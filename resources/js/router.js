@@ -69,10 +69,6 @@ const router = createRouter({
                 title: "Admin Post",
             },
         },
-        {
-            path: "/test",
-            component: () => import("./Pages/TestRoute.vue"),
-        },
     ],
 });
 
