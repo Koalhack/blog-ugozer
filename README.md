@@ -27,10 +27,6 @@ This is a blog fullstack project using PHP Laravel and SQLite database as a back
 
 Follow these steps to get this project live
 
-## Development
-
-Follow these steps to get this project live
-
 ```shell
 git clone https://github.com/Koalhack/blog-ugozer.git
 cd blog-ugozer
