@@ -16,6 +16,7 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
+        //INFO: Generate fake name for catgory table
         return [
             'name' => fake()->unique()->word()
         ];

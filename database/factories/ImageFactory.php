@@ -17,10 +17,11 @@ class ImageFactory extends Factory
      */
     public function definition(): array
     {
+        //INFO: Generate fake image and store it in 'public/storage/uploads'
         $fakeImagePath = UploadedFile::fake()->image('thumbnail.jpg', 600, 400)->store('uploads', 'public');
         return [
-            "name" => basename($fakeImagePath),
-            "path" => $fakeImagePath
+            "name" => basename($fakeImagePath), // save name
+            "path" => $fakeImagePath // save fullPath
         ];
     }
 }

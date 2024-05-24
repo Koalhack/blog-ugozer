@@ -11,7 +11,11 @@ use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
-    // Posts
+    ///////////////////////////////////////////////////////////////////////////
+    /////////////////                 Post                    /////////////////
+    ///////////////////////////////////////////////////////////////////////////
+
+    //INFO: Get all posts or specific category posts with the Laravel paginate method
     public function getPosts(Request $request, ?string $id = null)
     {
         $paginatelimit = intval($request->query('limit')) ?: 10;
@@ -21,6 +25,7 @@ class PostController extends Controller
         return PostResource::collection(Post::orderBy('id', 'DESC')->paginate($paginatelimit));
     }
 
+    //INFO: Get specific post
     public function getPost(string $id)
     {
         $post = Post::where('id', $id)->first();
@@ -30,6 +35,7 @@ class PostController extends Controller
         return Response::json(['state' => 'error', 'error' => 'Post not found!']);
     }
 
+    //INFO: Create a new post
     public function createPost(Request $request)
     {
         $validators = Validator::make($request->all(), [
@@ -52,6 +58,7 @@ class PostController extends Controller
         return Response::json(['state' => 'error', 'error' => $validators->getMessageBag()->toArray()]);
     }
 
+    //INFO: Update existing post
     public function updatePost(Request $request, string $id)
     {
         $validators = Validator::make($request->all(), [
@@ -78,6 +85,7 @@ class PostController extends Controller
         return Response::json(['state' => 'error', 'error' => $validators->getMessageBag()->toArray()]);
     }
 
+    //INFO: Delete existing post
     public function deletePost(string $id)
     {
         $post = Post::where('id', $id)->first();

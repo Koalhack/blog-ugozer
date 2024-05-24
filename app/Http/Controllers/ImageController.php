@@ -12,18 +12,24 @@ use Illuminate\Support\Facades\Validator;
 
 class ImageController extends Controller
 {
-    // Image
+    ///////////////////////////////////////////////////////////////////////////
+    /////////////////                 Image                   /////////////////
+    ///////////////////////////////////////////////////////////////////////////
+
+    //INFO: Get all images with the laravel paginate method
     public function getImagesPaginate(Request $request)
     {
         $paginatelimit = intval($request->query('limit')) ?: 10;
         return ImageResource::collection(Image::orderBy('id', 'DESC')->paginate($paginatelimit));
     }
 
+    //INFO: Get all images
     public function getImages()
     {
         return ImageResource::collection(Image::orderBy('id', 'DESC')->get());
     }
 
+    //INFO: Add image
     public function addImage(Request $request)
     {
         $validators = Validator::make($request->all(), [
@@ -32,7 +38,7 @@ class ImageController extends Controller
         if ($validators->passes()) {
             if ($request->file()) {
                 $fileName = Str::random(20) . '.' . $request->file('image')->getClientOriginalName();
-                $filePath = $request->file('image')->storeAs('uploads', $fileName, 'public');
+                $filePath = $request->file('image')->storeAs('uploads', $fileName, 'public'); // save uploaded file in '/storage/uploads'
                 Image::create([
                     'name' => $fileName,
                     'path' => $filePath
@@ -44,6 +50,7 @@ class ImageController extends Controller
         return Response::json(['state' => 'error', 'error' => $validators->getMessageBag()->toArray()]);
     }
 
+    //INFO: Delete a existing image
     public function deleteImage(string $id)
     {
         $image = Image::where('id', $id)->first();

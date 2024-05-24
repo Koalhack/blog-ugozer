@@ -19,13 +19,15 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
+        //INFO: Generate fake posts
+        //Genreate fake title for 'title' and 'slug' table column
         $title = fake()->sentence();
         return [
             "title" => $title,
-            "slug" => Str::slug($title),
-            "content" => fake()->paragraph(10),
-            "category_id" => fake()->randomElement(Category::all())['id'],
-            "image_id" => fake()->randomElement(Image::all())['id']
+            "slug" => Str::slug($title), // Generate slug with the fake title
+            "content" => fake()->paragraph(10), // Generate fake paragraph of 10 sentences
+            "category_id" => fake()->randomElement(Category::all())['id'], //Select random id from categories table
+            "image_id" => fake()->randomElement(Image::all())['id'] // Select random id from images table
         ];
     }
 }
